@@ -16,11 +16,11 @@ function App() {
         setNewTodo("")
     }
 
-    const toggleComplete = (index) => {
-        if (todos[index].complete) {
-            setTodos([...todos], todos[index].complete = false)
+    const toggleComplete = (i) => {
+        if (todos[i].complete) {
+            setTodos([...todos], todos[i].complete = false)
         } else {
-            setTodos([...todos], todos[index].complete = true)
+            setTodos([...todos], todos[i].complete = true)
         }
     }
 
@@ -35,8 +35,12 @@ function App() {
 
             <h2>Current Tasks</h2>
             <ul>
-                {todos.map((todo, i) => (
-                    <li key={i} style={todo.complete ?{textDecoration: "line-through"} : {textDecoration: "none"}} onClick={()=> {toggleComplete(i)}}>
+                {todos.map((todo, index) => (
+                    <li
+                    key={index}
+                    style={todo.complete ? {textDecoration: "line-through"} : {textDecoration: "none"}}
+                    onClick={()=> {toggleComplete(index)}}
+                    >
                         {todo.task}
                     </li>
                 ))}
